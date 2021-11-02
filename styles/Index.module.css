@@ -17,14 +17,21 @@
   font-family: 'Roboto Mono', monospace;
 }
 
-.timeleft > span {
+.timeleft > div > span {
   font-size: 32px;
 }
 
 .timeleft > div {
+  display: inline-block;
+  position: relative;
+}
+
+.timeleft > div > div {
   position: absolute;
-  width: 4px;
+  width: 2px;
   background: #000;
+  right: 7px;
+  bottom: 60px;
 }
 
 .center {

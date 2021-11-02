@@ -50,31 +50,33 @@ export default function Index() {
               <>
                 {
                   timeLeft > day &&
-                  <>
+                  <div>
                     {Math.floor(timeLeft / day)}
                     <div style={{ height: `${timeLeft % day / day * 100}px` }} />
                     <span style={{ background: `rgba(${highlight}, ${timeLeft % day / day})`}}>d</span>
-                  </>
+                  </div>
                 }
                 {
                   timeLeft > hour &&
-                  <>
+                  <div>
                     {Math.floor(timeLeft % day / hour)}
                     <div style={{ height: `${timeLeft % hour / hour * 100}px` }} />
                     <span style={{ background: `rgba(${highlight}, ${timeLeft % hour / hour})`}}>h</span>
-                  </>
+                  </div>
                 }
                 {
                   timeLeft > min &&
-                  <>
+                  <div>
                     {Math.floor(timeLeft % day % hour / min)}
                     <div style={{ height: `${timeLeft % min / min * 100}px` }} />
                     <span style={{ background: `rgba(${highlight}, ${timeLeft % min / min})`}}>m</span>
-                  </>
+                  </div>
                 }
-                {Math.floor(timeLeft % day % hour % min / sec)}
-                <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
-                <span style={{ background: `rgba(${highlight}, ${timeLeft % sec / sec})`}}>s</span>
+                <div>
+                  {Math.floor(timeLeft % day % hour % min / sec)}
+                  <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
+                  <span style={{ background: `rgba(${highlight}, ${timeLeft % sec / sec})`}}>s</span>
+                </div>
               </> :
               <>
                 {-timeLeft > day && <>{Math.floor(-timeLeft / day)}<span>d</span></>}
