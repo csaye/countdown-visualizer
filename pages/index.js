@@ -27,20 +27,24 @@ export default function Index() {
 
   function TimeLeft() {
     return (
-      timeLeft >= 0 ?
-      <>
-        {timeLeft > day && <>{Math.floor(timeLeft / day)}<span>d</span></>}
-        {timeLeft > hour && <>{Math.floor(timeLeft % day / hour)}<span>h</span></>}
-        {timeLeft > min && <>{Math.floor(timeLeft % day % hour / min)}<span>m</span></>}
-        {Math.floor(timeLeft % day % hour % min / sec)}<span>s</span>
-      </> :
-      <>
-        {-timeLeft > day && <>{Math.floor(-timeLeft / day)}<span>d</span></>}
-        {-timeLeft > hour && <>{Math.floor(-timeLeft % day / hour)}<span>h</span></>}
-        {-timeLeft > min && <>{Math.floor(-timeLeft % day % hour / min)}<span>m</span></>}
-        {Math.floor(-timeLeft % day % hour % min / sec)}<span>s</span>
-        ago
-      </>
+      <div className={styles.timeleft}>
+        {
+          timeLeft >= 0 ?
+          <>
+            {timeLeft > day && <>{Math.floor(timeLeft / day)}<span>d</span></>}
+            {timeLeft > hour && <>{Math.floor(timeLeft % day / hour)}<span>h</span></>}
+            {timeLeft > min && <>{Math.floor(timeLeft % day % hour / min)}<span>m</span></>}
+            {Math.floor(timeLeft % day % hour % min / sec)}<span>s</span>
+          </> :
+          <>
+            {-timeLeft > day && <>{Math.floor(-timeLeft / day)}<span>d</span></>}
+            {-timeLeft > hour && <>{Math.floor(-timeLeft % day / hour)}<span>h</span></>}
+            {-timeLeft > min && <>{Math.floor(-timeLeft % day % hour / min)}<span>m</span></>}
+            {Math.floor(-timeLeft % day % hour % min / sec)}<span>s</span>
+            ago
+          </>
+        }
+      </div>
     );
   }
 
@@ -60,14 +64,11 @@ export default function Index() {
       </div>
       {
         date &&
-        <h1>{date} {time}</h1>
-      }
-      <div>
-        {
-          !!timeLeft &&
+        <div className={styles.center}>
+          <h1>{date} {time}</h1>
           <TimeLeft />
-        }
-      </div>
+        </div>
+      }
     </div>
   );
 }

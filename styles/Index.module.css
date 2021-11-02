@@ -10,3 +10,15 @@
   top: 0;
   left: 0;
 }
+
+.timeleft {
+  font-size: 64px;
+}
+
+.timeleft > span {
+  font-size: 32px;
+}
+
+.center {
+  text-align: center;
+}
