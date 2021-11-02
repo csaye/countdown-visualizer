@@ -45,25 +45,29 @@ export default function Index() {
   }
 
   return (
-    <div>
-      <input
-        type="date"
-        value={date}
-        onChange={e => setDate(e.target.value)}
-      />
-      <input
-        type="time"
-        value={time}
-        onChange={e => setTime(e.target.value)}
-      />
+    <div className={styles.container}>
+      <div className={styles.input}>
+        <input
+          type="date"
+          value={date}
+          onChange={e => setDate(e.target.value)}
+        />
+        <input
+          type="time"
+          value={time}
+          onChange={e => setTime(e.target.value)}
+        />
+      </div>
       {
         date &&
         <h1>{date} {time}</h1>
       }
-      {
-        !!timeLeft &&
-        <TimeLeft />
-      }
+      <div>
+        {
+          !!timeLeft &&
+          <TimeLeft />
+        }
+      </div>
     </div>
   );
 }
