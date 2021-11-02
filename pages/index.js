@@ -25,29 +25,6 @@ export default function Index() {
     return () => clearInterval(interval);
   }, [date, time]);
 
-  function TimeLeft() {
-    return (
-      <div className={styles.timeleft}>
-        {
-          timeLeft >= 0 ?
-          <>
-            {timeLeft > day && <>{Math.floor(timeLeft / day)}<span>d</span></>}
-            {timeLeft > hour && <>{Math.floor(timeLeft % day / hour)}<span>h</span></>}
-            {timeLeft > min && <>{Math.floor(timeLeft % day % hour / min)}<span>m</span></>}
-            {Math.floor(timeLeft % day % hour % min / sec)}<span>s</span>
-          </> :
-          <>
-            {-timeLeft > day && <>{Math.floor(-timeLeft / day)}<span>d</span></>}
-            {-timeLeft > hour && <>{Math.floor(-timeLeft % day / hour)}<span>h</span></>}
-            {-timeLeft > min && <>{Math.floor(-timeLeft % day % hour / min)}<span>m</span></>}
-            {Math.floor(-timeLeft % day % hour % min / sec)}<span>s</span>
-            <span> ago</span>
-          </>
-        }
-      </div>
-    );
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.input}>
@@ -63,9 +40,26 @@ export default function Index() {
         />
       </div>
       {
-        date &&
+        date ?
         <div className={styles.center}>
-          <TimeLeft />
+          <div className={styles.timeleft}>
+            {
+              timeLeft >= 0 ?
+              <>
+                {timeLeft > day && <>{Math.floor(timeLeft / day)}<span>d</span></>}
+                {timeLeft > hour && <>{Math.floor(timeLeft % day / hour)}<span>h</span></>}
+                {timeLeft > min && <>{Math.floor(timeLeft % day % hour / min)}<span>m</span></>}
+                {Math.floor(timeLeft % day % hour % min / sec)}<span>s</span>
+              </> :
+              <>
+                {-timeLeft > day && <>{Math.floor(-timeLeft / day)}<span>d</span></>}
+                {-timeLeft > hour && <>{Math.floor(-timeLeft % day / hour)}<span>h</span></>}
+                {-timeLeft > min && <>{Math.floor(-timeLeft % day % hour / min)}<span>m</span></>}
+                {Math.floor(-timeLeft % day % hour % min / sec)}<span>s</span>
+                <span> ago</span>
+              </>
+            }
+          </div>
           <div className={styles.below}>
             <h1>{date} {time}</h1>
             <p>{Math.floor(timeLeft / 100) * 100}ms</p>
@@ -74,7 +68,8 @@ export default function Index() {
             <p>{Math.floor(timeLeft / hour).toFixed(1)}h</p>
             <p>{(timeLeft / day).toFixed(2)}d</p>
           </div>
-        </div>
+        </div> :
+        <h1>Enter a date</h1>
       }
     </div>
   );
