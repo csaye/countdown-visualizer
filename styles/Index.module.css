@@ -8,13 +8,17 @@
 .input {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   margin: 10px;
+}
+
+.input > input {
+  margin-left: 8px;
+  cursor: pointer;
 }
 
 .timeleft {
   font-size: 64px;
-  font-family: 'Roboto Mono', monospace;
 }
 
 .timeleft > div > span {
@@ -29,7 +33,7 @@
 .progress {
   position: absolute;
   width: 2px;
-  background: #efefef;
+  background: #ddd;
   right: 8px;
   bottom: 60px;
   height: 100px;
@@ -43,6 +47,7 @@
 .center {
   text-align: center;
   position: relative;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .below {
