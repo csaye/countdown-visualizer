@@ -23,7 +23,7 @@ export default function Index() {
   // update time left
   useEffect(() => {
     updateTimeLeft();
-    const interval = setInterval(updateTimeLeft, 100);
+    const interval = setInterval(updateTimeLeft, 10);
     return () => clearInterval(interval);
   }, [date, time]);
 
@@ -52,7 +52,9 @@ export default function Index() {
                   timeLeft > day &&
                   <div>
                     {Math.floor(timeLeft / day)}
-                    <div style={{ height: `${timeLeft % day / day * 100}px` }} />
+                    <div className={styles.progress}>
+                      <div style={{ height: `${timeLeft % day / day * 100}px` }} />
+                    </div>
                     <span style={{ background: `rgba(${highlight}, ${timeLeft % day / day})`}}>d</span>
                   </div>
                 }
@@ -60,7 +62,9 @@ export default function Index() {
                   timeLeft > hour &&
                   <div>
                     {Math.floor(timeLeft % day / hour)}
-                    <div style={{ height: `${timeLeft % hour / hour * 100}px` }} />
+                    <div className={styles.progress}>
+                      <div style={{ height: `${timeLeft % hour / hour * 100}px` }} />
+                    </div>
                     <span style={{ background: `rgba(${highlight}, ${timeLeft % hour / hour})`}}>h</span>
                   </div>
                 }
@@ -68,13 +72,17 @@ export default function Index() {
                   timeLeft > min &&
                   <div>
                     {Math.floor(timeLeft % day % hour / min)}
-                    <div style={{ height: `${timeLeft % min / min * 100}px` }} />
+                    <div className={styles.progress}>
+                      <div style={{ height: `${timeLeft % min / min * 100}px` }} />
+                    </div>
                     <span style={{ background: `rgba(${highlight}, ${timeLeft % min / min})`}}>m</span>
                   </div>
                 }
                 <div>
                   {Math.floor(timeLeft % day % hour % min / sec)}
-                  <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
+                  <div className={styles.progress}>
+                    <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
+                  </div>
                   <span style={{ background: `rgba(${highlight}, ${timeLeft % sec / sec})`}}>s</span>
                 </div>
               </> :
@@ -89,7 +97,7 @@ export default function Index() {
           </div>
           <div className={styles.below}>
             <h1>{date} {time}</h1>
-            <p>{Math.floor(timeLeft / 100) * 100}ms</p>
+            <p>{Math.floor(timeLeft / 10) * 10}ms</p>
             <p>{Math.floor(timeLeft / sec)}s</p>
             <p>{Math.floor(timeLeft / min)}m</p>
             <p>{Math.floor(timeLeft / hour).toFixed(1)}h</p>

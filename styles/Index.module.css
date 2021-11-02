@@ -26,12 +26,18 @@
   position: relative;
 }
 
-.timeleft > div > div {
+.progress {
   position: absolute;
   width: 2px;
-  background: #000;
-  right: 7px;
+  background: #efefef;
+  right: 8px;
   bottom: 60px;
+  height: 100px;
+  transform: rotateX(180deg);
+}
+
+.progress > div {
+  background: #000;
 }
 
 .center {
