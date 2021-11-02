@@ -41,7 +41,7 @@ export default function Index() {
             {-timeLeft > hour && <>{Math.floor(-timeLeft % day / hour)}<span>h</span></>}
             {-timeLeft > min && <>{Math.floor(-timeLeft % day % hour / min)}<span>m</span></>}
             {Math.floor(-timeLeft % day % hour % min / sec)}<span>s</span>
-            ago
+            <span> ago</span>
           </>
         }
       </div>
@@ -65,8 +65,15 @@ export default function Index() {
       {
         date &&
         <div className={styles.center}>
-          <h1>{date} {time}</h1>
           <TimeLeft />
+          <div className={styles.below}>
+            <h1>{date} {time}</h1>
+            <p>{Math.floor(timeLeft / 100) * 100}ms</p>
+            <p>{Math.floor(timeLeft / sec)}s</p>
+            <p>{Math.floor(timeLeft / min)}m</p>
+            <p>{Math.floor(timeLeft / hour).toFixed(1)}h</p>
+            <p>{(timeLeft / day).toFixed(2)}d</p>
+          </div>
         </div>
       }
     </div>

@@ -9,6 +9,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  margin: 10px;
 }
 
 .timeleft {
@@ -22,4 +23,18 @@
 
 .center {
   text-align: center;
+  position: relative;
+}
+
+.below {
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.below > h1 {
+  color: #999;
+  font-size: 16px;
 }
