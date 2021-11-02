@@ -8,7 +8,7 @@ const min = sec * 60;
 const hour = min * 60;
 const day = hour * 24;
 
-const highlight = '33, 150, 243';
+const highlight = '0, 0, 0'
 
 export default function Index() {
   const [date, setDate] = useState('');
@@ -48,13 +48,32 @@ export default function Index() {
             {
               timeLeft >= 0 ?
               <>
-                {timeLeft > day && <>{Math.floor(timeLeft / day)}
-                <span style={{ background: `rgba(${highlight}, ${timeLeft % day / day})`}}>d</span></>}
-                {timeLeft > hour && <>{Math.floor(timeLeft % day / hour)}
-                <span style={{ background: `rgba(${highlight}, ${timeLeft % hour / hour})`}}>h</span></>}
-                {timeLeft > min && <>{Math.floor(timeLeft % day % hour / min)}
-                <span style={{ background: `rgba(${highlight}, ${timeLeft % min / min})`}}>m</span></>}
+                {
+                  timeLeft > day &&
+                  <>
+                    {Math.floor(timeLeft / day)}
+                    <div style={{ height: `${timeLeft % day / day * 100}px` }} />
+                    <span style={{ background: `rgba(${highlight}, ${timeLeft % day / day})`}}>d</span>
+                  </>
+                }
+                {
+                  timeLeft > hour &&
+                  <>
+                    {Math.floor(timeLeft % day / hour)}
+                    <div style={{ height: `${timeLeft % hour / hour * 100}px` }} />
+                    <span style={{ background: `rgba(${highlight}, ${timeLeft % hour / hour})`}}>h</span>
+                  </>
+                }
+                {
+                  timeLeft > min &&
+                  <>
+                    {Math.floor(timeLeft % day % hour / min)}
+                    <div style={{ height: `${timeLeft % min / min * 100}px` }} />
+                    <span style={{ background: `rgba(${highlight}, ${timeLeft % min / min})`}}>m</span>
+                  </>
+                }
                 {Math.floor(timeLeft % day % hour % min / sec)}
+                <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
                 <span style={{ background: `rgba(${highlight}, ${timeLeft % sec / sec})`}}>s</span>
               </> :
               <>

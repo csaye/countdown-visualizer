@@ -21,6 +21,12 @@
   font-size: 32px;
 }
 
+.timeleft > div {
+  position: absolute;
+  width: 4px;
+  background: #000;
+}
+
 .center {
   text-align: center;
   position: relative;
