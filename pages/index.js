@@ -1,10 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from '../styles/Index.module.css';
 
 export default function Index() {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [timeLeft, setTimeLeft] = useState(undefined);
+
+  function updateTimeLeft() {
+    const end = new Date(`${date} ${time}`);
+    setTimeLeft(end - new Date());
+  }
+
+  // update time left
+  useEffect(() => {
+    updateTimeLeft();
+    const interval = setInterval(updateTimeLeft, 100);
+    return () => clearInterval(interval);
+  }, [date, time]);
 
   return (
     <div>
@@ -19,6 +32,10 @@ export default function Index() {
         onChange={e => setTime(e.target.value)}
       />
       <h1>{date} {time}</h1>
+      {
+        timeLeft &&
+        <p>{timeLeft}</p>
+      }
     </div>
   );
 }
