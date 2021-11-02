@@ -21,6 +21,31 @@
   font-size: 32px;
 }
 
+.timeleft > span:nth-of-type(1) {
+  animation: fade 86400s linear infinite;
+}
+
+.timeleft > span:nth-of-type(2) {
+  animation: fade 3600s linear infinite;
+}
+
+.timeleft > span:nth-of-type(3) {
+  animation: fade 60s linear infinite;
+}
+
+.timeleft > span:nth-of-type(4) {
+  animation: fade 1s linear infinite;
+}
+
+@keyframes fade {
+  0% {
+    background: blue;
+  }
+  90% {
+    background: transparent;
+  }
+}
+
 .center {
   text-align: center;
   position: relative;
