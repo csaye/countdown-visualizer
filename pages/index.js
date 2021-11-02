@@ -27,6 +27,12 @@ export default function Index() {
     return () => clearInterval(interval);
   }, [date, time]);
 
+  // pads given num to 2 digits
+  function pad(num, noPad) {
+    if (num > 9 || noPad) return num;
+    return `0${num}`;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.input}>
@@ -61,7 +67,7 @@ export default function Index() {
                 {
                   timeLeft > hour &&
                   <div>
-                    {Math.floor(timeLeft % day / hour)}
+                    {pad(Math.floor(timeLeft % day / hour), timeLeft < day)}
                     <div className={styles.progress}>
                       <div style={{ height: `${timeLeft % hour / hour * 100}px` }} />
                     </div>
@@ -71,7 +77,7 @@ export default function Index() {
                 {
                   timeLeft > min &&
                   <div>
-                    {Math.floor(timeLeft % day % hour / min)}
+                    {pad(Math.floor(timeLeft % day % hour / min), timeLeft < hour)}
                     <div className={styles.progress}>
                       <div style={{ height: `${timeLeft % min / min * 100}px` }} />
                     </div>
@@ -79,7 +85,7 @@ export default function Index() {
                   </div>
                 }
                 <div>
-                  {Math.floor(timeLeft % day % hour % min / sec)}
+                  {pad(Math.floor(timeLeft % day % hour % min / sec), timeLeft < min)}
                   <div className={styles.progress}>
                     <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
                   </div>
