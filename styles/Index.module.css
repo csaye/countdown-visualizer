@@ -13,6 +13,7 @@
 
 .timeleft {
   font-size: 64px;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .timeleft > span {

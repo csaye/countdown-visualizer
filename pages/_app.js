@@ -11,6 +11,7 @@ export default function App(props) {
         <title>Countdown Visualizer</title>
         <meta name="description" content="Visualize your next deadline." />
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
       </Head>
       <Component {...pageProps} />
     </>
