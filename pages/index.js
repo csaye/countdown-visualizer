@@ -8,6 +8,8 @@ const min = sec * 60;
 const hour = min * 60;
 const day = hour * 24;
 
+const highlight = '33, 150, 243';
+
 export default function Index() {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('00:00');
@@ -46,10 +48,14 @@ export default function Index() {
             {
               timeLeft >= 0 ?
               <>
-                {timeLeft > day && <>{Math.floor(timeLeft / day)}<span>d</span></>}
-                {timeLeft > hour && <>{Math.floor(timeLeft % day / hour)}<span>h</span></>}
-                {timeLeft > min && <>{Math.floor(timeLeft % day % hour / min)}<span>m</span></>}
-                {Math.floor(timeLeft % day % hour % min / sec)}<span>s</span>
+                {timeLeft > day && <>{Math.floor(timeLeft / day)}
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % day / day})`}}>d</span></>}
+                {timeLeft > hour && <>{Math.floor(timeLeft % day / hour)}
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % hour / hour})`}}>h</span></>}
+                {timeLeft > min && <>{Math.floor(timeLeft % day % hour / min)}
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % min / min})`}}>m</span></>}
+                {Math.floor(timeLeft % day % hour % min / sec)}
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % sec / sec})`}}>s</span>
               </> :
               <>
                 {-timeLeft > day && <>{Math.floor(-timeLeft / day)}<span>d</span></>}
