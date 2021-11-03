@@ -10,10 +10,15 @@
   top: 0;
   right: 0;
   margin: 10px;
+  text-align: center;
+  transition: 1s;
+  z-index: 1;
 }
 
-.input > h1 {
-  margin: 0 0 10px 0;
+.input.centered {
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
 }
 
 .input > input {
@@ -56,6 +61,11 @@
 .center {
   text-align: center;
   position: relative;
+  transition: 1s;
+}
+
+.center.hidden {
+  opacity: 0;
 }
 
 .below {
