@@ -64,7 +64,7 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % day / day * 100}px` }} />
                   </div>
-                  <span style={{ background: `rgba(${highlight}, ${Math.abs(timeLeft) % day / day})`}}>d</span>
+                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % day / day})`}}>d</span>
                 </div>
               }
               {
@@ -74,7 +74,7 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % hour / hour * 100}px` }} />
                   </div>
-                  <span style={{ background: `rgba(${highlight}, ${Math.abs(timeLeft) % hour / hour})`}}>h</span>
+                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % hour / hour})`}}>h</span>
                 </div>
               }
               {
@@ -84,7 +84,7 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % min / min * 100}px` }} />
                   </div>
-                  <span style={{ background: `rgba(${highlight}, ${Math.abs(timeLeft) % min / min})`}}>m</span>
+                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % min / min})`}}>m</span>
                 </div>
               }
               {
@@ -93,7 +93,7 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % sec / sec * 100}px` }} />
                   </div>
-                  <span style={{ background: `rgba(${highlight}, ${Math.abs(timeLeft) % sec / sec})`}}>s</span>
+                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % sec / sec})`}}>s</span>
                 </div>
               }
               {

@@ -21,6 +21,15 @@
   transform: translate(50%, -50%);
 }
 
+.input > h1 {
+  margin: 0 0 10px 0;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 24px;
+}
+
 .input > input {
   margin-left: 8px;
   cursor: pointer;
@@ -32,7 +41,7 @@
 
 .timeleft > div > span {
   font-size: 32px;
-  border-radius: 5px;
+  border-bottom: 4px solid;
 }
 
 .ago {
@@ -79,4 +88,9 @@
 .below > h1 {
   color: #999;
   font-size: 16px;
+  margin: 16px 0;
+}
+
+.below > p {
+  margin: 4px 0;
 }
