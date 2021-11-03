@@ -12,6 +12,10 @@
   margin: 10px;
 }
 
+.input > h1 {
+  margin: 0 0 10px 0;
+}
+
 .input > input {
   margin-left: 8px;
   cursor: pointer;
@@ -52,7 +56,6 @@
 .center {
   text-align: center;
   position: relative;
-  font-family: 'Roboto Mono', monospace;
 }
 
 .below {

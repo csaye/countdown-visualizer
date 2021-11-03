@@ -35,7 +35,10 @@ export default function Index() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.input}>
+      <div className={
+        date ? styles.input : `${styles.input} ${styles.center}`
+      }>
+        {!date && <h1>Enter a date</h1>}
         <input
           type="date"
           value={date}
@@ -48,7 +51,7 @@ export default function Index() {
         />
       </div>
       {
-        date ?
+        date &&
         <div className={styles.center}>
           <div className={styles.timeleft}>
             {
@@ -104,8 +107,7 @@ export default function Index() {
             <p>{(timeLeft / hour).toFixed(2)}h</p>
             <p>{(timeLeft / day).toFixed(2)}d</p>
           </div>
-        </div> :
-        <h1>Enter a date</h1>
+        </div>
       }
     </div>
   );
