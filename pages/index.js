@@ -93,11 +93,46 @@ export default function Index() {
                 </div>
               </> :
               <>
-                {-timeLeft > day && <>{Math.floor(-timeLeft / day)}<span>d</span></>}
-                {-timeLeft > hour && <>{Math.floor(-timeLeft % day / hour)}<span>h</span></>}
-                {-timeLeft > min && <>{Math.floor(-timeLeft % day % hour / min)}<span>m</span></>}
-                {Math.floor(-timeLeft % day % hour % min / sec)}<span>s</span>
-                <span> ago</span>
+                {
+                  -timeLeft > day &&
+                  <div>
+                    {Math.floor(-timeLeft / day)}
+                    <div className={styles.progress}>
+                      <div style={{ height: `${-timeLeft % day / day * 100}px` }} />
+                    </div>
+                    <span style={{ background: `rgba(${highlight}, ${-timeLeft % day / day})`}}>d</span>
+                  </div>
+                }
+                {
+                  -timeLeft > hour &&
+                  <div>
+                    {pad(Math.floor(-timeLeft % day / hour), timeLeft < day)}
+                    <div className={styles.progress}>
+                      <div style={{ height: `${-timeLeft % hour / hour * 100}px` }} />
+                    </div>
+                    <span style={{ background: `rgba(${highlight}, ${-timeLeft % hour / hour})`}}>h</span>
+                  </div>
+                }
+                {
+                  -timeLeft > min &&
+                  <div>
+                    {pad(Math.floor(-timeLeft % day % hour / min), -timeLeft < hour)}
+                    <div className={styles.progress}>
+                      <div style={{ height: `${-timeLeft % min / min * 100}px` }} />
+                    </div>
+                    <span style={{ background: `rgba(${highlight}, ${-timeLeft % min / min})`}}>m</span>
+                  </div>
+                }
+                <div>
+                  {pad(Math.floor(-timeLeft % day % hour % min / sec), -timeLeft < min)}
+                  <div className={styles.progress}>
+                    <div style={{ height: `${-timeLeft % sec / sec * 100}px` }} />
+                  </div>
+                  <span style={{ background: `rgba(${highlight}, ${-timeLeft % sec / sec})`}}>s</span>
+                </div>
+                <div className={styles.ago}>
+                  <span> ago</span>
+                </div>
               </>
             }
           </div>
