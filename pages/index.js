@@ -52,88 +52,49 @@ export default function Index() {
         <div className={styles.center}>
           <div className={styles.timeleft}>
             {
-              timeLeft >= 0 ?
-              <>
-                {
-                  timeLeft > day &&
-                  <div>
-                    {Math.floor(timeLeft / day)}
-                    <div className={styles.progress}>
-                      <div style={{ height: `${timeLeft % day / day * 100}px` }} />
-                    </div>
-                    <span style={{ background: `rgba(${highlight}, ${timeLeft % day / day})`}}>d</span>
-                  </div>
-                }
-                {
-                  timeLeft > hour &&
-                  <div>
-                    {pad(Math.floor(timeLeft % day / hour), timeLeft < day)}
-                    <div className={styles.progress}>
-                      <div style={{ height: `${timeLeft % hour / hour * 100}px` }} />
-                    </div>
-                    <span style={{ background: `rgba(${highlight}, ${timeLeft % hour / hour})`}}>h</span>
-                  </div>
-                }
-                {
-                  timeLeft > min &&
-                  <div>
-                    {pad(Math.floor(timeLeft % day % hour / min), timeLeft < hour)}
-                    <div className={styles.progress}>
-                      <div style={{ height: `${timeLeft % min / min * 100}px` }} />
-                    </div>
-                    <span style={{ background: `rgba(${highlight}, ${timeLeft % min / min})`}}>m</span>
-                  </div>
-                }
-                <div>
-                  {pad(Math.floor(timeLeft % day % hour % min / sec), timeLeft < min)}
-                  <div className={styles.progress}>
-                    <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
-                  </div>
-                  <span style={{ background: `rgba(${highlight}, ${timeLeft % sec / sec})`}}>s</span>
+              timeLeft > day &&
+              <div>
+                {Math.floor(timeLeft / day)}
+                <div className={styles.progress}>
+                  <div style={{ height: `${timeLeft % day / day * 100}px` }} />
                 </div>
-              </> :
-              <>
-                {
-                  -timeLeft > day &&
-                  <div>
-                    {Math.floor(-timeLeft / day)}
-                    <div className={styles.progress}>
-                      <div style={{ height: `${-timeLeft % day / day * 100}px` }} />
-                    </div>
-                    <span style={{ background: `rgba(${highlight}, ${-timeLeft % day / day})`}}>d</span>
-                  </div>
-                }
-                {
-                  -timeLeft > hour &&
-                  <div>
-                    {pad(Math.floor(-timeLeft % day / hour), timeLeft < day)}
-                    <div className={styles.progress}>
-                      <div style={{ height: `${-timeLeft % hour / hour * 100}px` }} />
-                    </div>
-                    <span style={{ background: `rgba(${highlight}, ${-timeLeft % hour / hour})`}}>h</span>
-                  </div>
-                }
-                {
-                  -timeLeft > min &&
-                  <div>
-                    {pad(Math.floor(-timeLeft % day % hour / min), -timeLeft < hour)}
-                    <div className={styles.progress}>
-                      <div style={{ height: `${-timeLeft % min / min * 100}px` }} />
-                    </div>
-                    <span style={{ background: `rgba(${highlight}, ${-timeLeft % min / min})`}}>m</span>
-                  </div>
-                }
-                <div>
-                  {pad(Math.floor(-timeLeft % day % hour % min / sec), -timeLeft < min)}
-                  <div className={styles.progress}>
-                    <div style={{ height: `${-timeLeft % sec / sec * 100}px` }} />
-                  </div>
-                  <span style={{ background: `rgba(${highlight}, ${-timeLeft % sec / sec})`}}>s</span>
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % day / day})`}}>d</span>
+              </div>
+            }
+            {
+              timeLeft > hour &&
+              <div>
+                {pad(Math.floor(timeLeft % day / hour), timeLeft < day)}
+                <div className={styles.progress}>
+                  <div style={{ height: `${timeLeft % hour / hour * 100}px` }} />
                 </div>
-                <div className={styles.ago}>
-                  <span> ago</span>
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % hour / hour})`}}>h</span>
+              </div>
+            }
+            {
+              timeLeft > min &&
+              <div>
+                {pad(Math.floor(timeLeft % hour / min), timeLeft < hour)}
+                <div className={styles.progress}>
+                  <div style={{ height: `${timeLeft % min / min * 100}px` }} />
                 </div>
-              </>
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % min / min})`}}>m</span>
+              </div>
+            }
+            {
+              <div>
+                {pad(Math.floor(timeLeft % min / sec), timeLeft < min)}
+                <div className={styles.progress}>
+                  <div style={{ height: `${timeLeft % sec / sec * 100}px` }} />
+                </div>
+                <span style={{ background: `rgba(${highlight}, ${timeLeft % sec / sec})`}}>s</span>
+              </div>
+            }
+            {
+              timeLeft < 0 &&
+              <div className={styles.ago}>
+                <span> ago</span>
+              </div>
             }
           </div>
           <div className={styles.below}>
