@@ -41,7 +41,7 @@
 
 .timeleft > div > span {
   font-size: 32px;
-  border-bottom: 4px solid;
+  border-radius: 4px;
 }
 
 .ago {

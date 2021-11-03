@@ -33,6 +33,12 @@ export default function Index() {
     return `0${num}`;
   }
 
+  // returns text color for given value
+  function getColor(val) {
+    if (val > 0.5) return 'white';
+    return 'black';
+  }
+
   return (
     <div className={styles.container}>
       <div className={
@@ -64,7 +70,10 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % day / day * 100}px` }} />
                   </div>
-                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % day / day})`}}>d</span>
+                  <span style={{
+                    background: `rgba(${highlight}, ${Math.abs(timeLeft) % day / day})`,
+                    color: getColor(Math.abs(timeLeft) % day / day)
+                  }}>d</span>
                 </div>
               }
               {
@@ -74,7 +83,10 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % hour / hour * 100}px` }} />
                   </div>
-                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % hour / hour})`}}>h</span>
+                  <span style={{
+                    background: `rgba(${highlight}, ${Math.abs(timeLeft) % hour / hour})`,
+                    color: getColor(Math.abs(timeLeft) % hour / hour)
+                  }}>h</span>
                 </div>
               }
               {
@@ -84,7 +96,10 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % min / min * 100}px` }} />
                   </div>
-                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % min / min})`}}>m</span>
+                  <span style={{
+                    background: `rgba(${highlight}, ${Math.abs(timeLeft) % min / min})`,
+                    color: getColor(Math.abs(timeLeft) % min / min)
+                  }}>m</span>
                 </div>
               }
               {
@@ -93,7 +108,10 @@ export default function Index() {
                   <div className={styles.progress}>
                     <div style={{ height: `${Math.abs(timeLeft) % sec / sec * 100}px` }} />
                   </div>
-                  <span style={{ borderColor: `rgba(${highlight}, ${Math.abs(timeLeft) % sec / sec})`}}>s</span>
+                  <span style={{
+                    background: `rgba(${highlight}, ${Math.abs(timeLeft) % sec / sec})`,
+                    color: getColor(Math.abs(timeLeft) % sec / sec)
+                  }}>s</span>
                 </div>
               }
               {
