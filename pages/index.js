@@ -70,12 +70,6 @@ export default function Index() {
     return `0${num}`;
   }
 
-  // returns text color for given value
-  function getColor(val) {
-    if (val > 0.5) return 'white';
-    return 'black';
-  }
-
   // returns whether time left ready
   function ready() {
     return timeLeft !== undefined && !isNaN(timeLeft);
@@ -117,7 +111,6 @@ export default function Index() {
                   </div>
                   <span style={{
                     background: `rgba(${highlight}, ${Math.abs(timeLeft) % day / day})`,
-                    color: getColor(Math.abs(timeLeft) % day / day)
                   }}>d</span>
                 </div>
               }
@@ -130,7 +123,6 @@ export default function Index() {
                   </div>
                   <span style={{
                     background: `rgba(${highlight}, ${Math.abs(timeLeft) % hour / hour})`,
-                    color: getColor(Math.abs(timeLeft) % hour / hour)
                   }}>h</span>
                 </div>
               }
@@ -143,7 +135,6 @@ export default function Index() {
                   </div>
                   <span style={{
                     background: `rgba(${highlight}, ${Math.abs(timeLeft) % min / min})`,
-                    color: getColor(Math.abs(timeLeft) % min / min)
                   }}>m</span>
                 </div>
               }
@@ -155,7 +146,6 @@ export default function Index() {
                   </div>
                   <span style={{
                     background: `rgba(${highlight}, ${Math.abs(timeLeft) % sec / sec})`,
-                    color: getColor(Math.abs(timeLeft) % sec / sec)
                   }}>s</span>
                 </div>
               }
