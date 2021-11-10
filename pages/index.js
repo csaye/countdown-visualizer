@@ -42,9 +42,10 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <div className={
-        date ? styles.input : `${styles.input} ${styles.centered}`
+        (timeLeft !== undefined && !isNaN(timeLeft)) ?
+        styles.input : `${styles.input} ${styles.centered}`
       }>
-        {!date && <h1>Enter a date</h1>}
+        {!(timeLeft !== undefined && !isNaN(timeLeft)) && <h1>Enter a date</h1>}
         <input
           type="date"
           value={date}
@@ -57,10 +58,11 @@ export default function Index() {
         />
       </div>
       <div className={
-        date ? styles.center : `${styles.center} ${styles.hidden}`
+        (timeLeft !== undefined && !isNaN(timeLeft)) ?
+        styles.center : `${styles.center} ${styles.hidden}`
       }>
         {
-          date &&
+          (timeLeft !== undefined && !isNaN(timeLeft)) &&
           <>
             <div className={styles.timeleft}>
               {
