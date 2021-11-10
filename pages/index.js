@@ -39,13 +39,17 @@ export default function Index() {
     return 'black';
   }
 
+  // returns whether time left ready
+  function ready() {
+    return timeLeft !== undefined && !isNaN(timeLeft);
+  }
+
   return (
     <div className={styles.container}>
       <div className={
-        (timeLeft !== undefined && !isNaN(timeLeft)) ?
-        styles.input : `${styles.input} ${styles.centered}`
+        ready() ? styles.input : `${styles.input} ${styles.centered}`
       }>
-        {!(timeLeft !== undefined && !isNaN(timeLeft)) && <h1>Enter a date</h1>}
+        {!ready() && <h1>Enter a date</h1>}
         <input
           type="date"
           value={date}
@@ -58,11 +62,11 @@ export default function Index() {
         />
       </div>
       <div className={
-        (timeLeft !== undefined && !isNaN(timeLeft)) ?
+        ready() ?
         styles.center : `${styles.center} ${styles.hidden}`
       }>
         {
-          (timeLeft !== undefined && !isNaN(timeLeft)) &&
+          ready() &&
           <>
             <div className={styles.timeleft}>
               {
