@@ -13,6 +13,7 @@
   text-align: center;
   transition: 1s;
   z-index: 1;
+  white-space: nowrap;
 }
 
 .input.centered {
@@ -93,4 +94,20 @@
 
 .below > p {
   margin: 4px 0;
+}
+
+@media (max-width: 576px) {
+  .timeleft {
+    font-size: 48px;
+  }
+  .timeleft > div > span {
+    font-size: 24px;
+  }
+  .progress {
+    bottom: 45px;
+    right: 7px;
+  }
+  .below > h1 {
+    margin-top: 0;
+  }
 }
