@@ -37,6 +37,26 @@ export default function Index() {
     osc.stop(audioctx.currentTime + 0.1);
   }
 
+  // play second sound
+  useEffect(() => {
+    playSound(440);
+  }, [Math.floor(Math.abs(timeLeft) % min / sec)]);
+
+  // play minute sound
+  useEffect(() => {
+    playSound(540);
+  }, [Math.floor(Math.abs(timeLeft) % hour / min)]);
+
+  // play hour sound
+  useEffect(() => {
+    playSound(640);
+  }, [Math.floor(Math.abs(timeLeft) % day / hour)]);
+
+  // play day sound
+  useEffect(() => {
+    playSound(740);
+  }, [Math.floor(Math.abs(timeLeft) / day)]);
+
   // update time left
   useEffect(() => {
     updateTimeLeft();
