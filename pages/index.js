@@ -10,6 +10,8 @@ const day = hour * 24;
 
 const highlight = '0, 0, 0'
 
+let audioctx;
+
 export default function Index() {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('00:00');
@@ -18,6 +20,21 @@ export default function Index() {
   function updateTimeLeft() {
     const end = new Date(`${date.replaceAll('-', '/')} ${time}`);
     setTimeLeft(end - new Date());
+  }
+
+  // initialize audio context
+  useEffect(() => {
+    audioctx = new (window.AudioContext || window.webkitAudioContext)();
+  }, []);
+
+  // plays sound of given frequency
+  function playSound(frequency) {
+    if (!ready()) return;
+    const osc = audioctx.createOscillator();
+    osc.frequency.value = frequency;
+    osc.connect(audioctx.destination);
+    osc.start();
+    osc.stop(audioctx.currentTime + 0.1);
   }
 
   // update time left
