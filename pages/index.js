@@ -16,7 +16,7 @@ export default function Index() {
   const [timeLeft, setTimeLeft] = useState(undefined);
 
   function updateTimeLeft() {
-    const end = new Date(`${date} ${time}`);
+    const end = new Date(`${date.replaceAll('-', '/')} ${time}`);
     setTimeLeft(end - new Date());
   }
 
@@ -54,11 +54,13 @@ export default function Index() {
           type="date"
           value={date}
           onChange={e => setDate(e.target.value)}
+          placeholder="mm/dd/yyyy"
         />
         <input
           type="time"
           value={time}
           onChange={e => setTime(e.target.value)}
+          placeholder="hh:mm"
         />
       </div>
       <div className={
@@ -128,7 +130,7 @@ export default function Index() {
               }
             </div>
             <div className={styles.below}>
-              <h1>{date} {time}</h1>
+              <h1>{date.replaceAll('-', '/')} {time}</h1>
               <p>{(timeLeft / sec).toFixed(2)}s</p>
               <p>{(timeLeft / min).toFixed(2)}m</p>
               <p>{(timeLeft / hour).toFixed(2)}h</p>
