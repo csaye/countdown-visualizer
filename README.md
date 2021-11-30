@@ -2,4 +2,4 @@
 
 Visualize your next deadline.
 
-Try it here: [vis.vercel.app](https://vis.vercel.app)
+Try it here: [visual.vercel.app](https://visual.vercel.app)
