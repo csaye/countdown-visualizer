@@ -1,3 +1,6 @@
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+
 import { useEffect, useState } from 'react';
 
 import styles from '../styles/Index.module.css';
@@ -78,8 +81,11 @@ export default function Index() {
 
   return (
     <div className={styles.container}>
-      <button onClick={() => setMuted(!muted)}>
-        {muted ? 'muted' : 'not muted'}
+      <button
+        className={styles.mutebutton}
+        onClick={() => setMuted(!muted)}
+      >
+        {muted ? <VolumeOffIcon /> : <VolumeUpIcon />}
       </button>
       <div className={
         ready() ? styles.input : `${styles.input} ${styles.centered}`
