@@ -38,11 +38,13 @@
 
 .timeleft {
   font-size: 64px;
+  font-weight: 700;
 }
 
 .timeleft > div > span {
   font-size: 32px;
   border-radius: 4px;
+  font-weight: 400;
 }
 
 .ago {

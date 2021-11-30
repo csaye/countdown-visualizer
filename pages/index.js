@@ -8,7 +8,7 @@ const min = sec * 60;
 const hour = min * 60;
 const day = hour * 24;
 
-const highlight = '0, 0, 0'
+const highlight = '0, 0, 0';
 
 let audioctx;
 
@@ -158,10 +158,14 @@ export default function Index() {
             </div>
             <div className={styles.below}>
               <h1>{date.replaceAll('-', '/')} {time}</h1>
+              <p>{timeLeft}ms</p>
               <p>{(timeLeft / sec).toFixed(2)}s</p>
               <p>{(timeLeft / min).toFixed(2)}m</p>
               <p>{(timeLeft / hour).toFixed(2)}h</p>
               <p>{(timeLeft / day).toFixed(2)}d</p>
+              <p>{(timeLeft / (day * 7)).toFixed(2)}w</p>
+              <p>{(timeLeft / (day * 30)).toFixed(2)}M</p>
+              <p>{(timeLeft / (day * 365)).toFixed(2)}y</p>
             </div>
           </>
         }
