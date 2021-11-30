@@ -16,6 +16,7 @@ export default function Index() {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('00:00');
   const [timeLeft, setTimeLeft] = useState(undefined);
+  const [muted, setMuted] = useState(true);
 
   function updateTimeLeft() {
     const end = new Date(`${date.replaceAll('-', '/')} ${time}`);
@@ -26,6 +27,36 @@ export default function Index() {
   useEffect(() => {
     audioctx = new (window.AudioContext || window.webkitAudioContext)();
   }, []);
+
+  // plays sound of given frequency
+  function playSound(frequency) {
+    if (!ready() || muted) return;
+    const osc = audioctx.createOscillator();
+    osc.frequency.value = frequency;
+    osc.connect(audioctx.destination);
+    osc.start();
+    osc.stop(audioctx.currentTime + 0.1);
+  }
+
+  // play second sound
+  useEffect(() => {
+    playSound(440);
+  }, [Math.floor(Math.abs(timeLeft) % min / sec)]);
+
+  // play minute sound
+  useEffect(() => {
+    playSound(540);
+  }, [Math.floor(Math.abs(timeLeft) % hour / min)]);
+
+  // play hour sound
+  useEffect(() => {
+    playSound(640);
+  }, [Math.floor(Math.abs(timeLeft) % day / hour)]);
+
+  // play day sound
+  useEffect(() => {
+    playSound(740);
+  }, [Math.floor(Math.abs(timeLeft) / day)]);
 
   // update time left
   useEffect(() => {
@@ -47,6 +78,9 @@ export default function Index() {
 
   return (
     <div className={styles.container}>
+      <button onClick={() => setMuted(!muted)}>
+        {muted ? 'muted' : 'not muted'}
+      </button>
       <div className={
         ready() ? styles.input : `${styles.input} ${styles.centered}`
       }>
